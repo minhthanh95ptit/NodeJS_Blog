@@ -28,6 +28,15 @@ app.listen(4000, () => {
 })
 
 
+const validateMiddleWare = (req, res, next) => {
+    if (req.files == null || req.body.title == null || req.body.title == null) {
+        return res.redirect('/posts/new')
+    }
+    next()
+}
+
+app.use('/posts/store', validateMiddleWare)
+
 app.get('/', (req, res) => {
     BlogPost.find({}, function (error, posts) {
         res.render('index', {
