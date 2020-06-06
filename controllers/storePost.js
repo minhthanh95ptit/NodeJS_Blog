@@ -3,8 +3,7 @@ const path = require('path')
 
 module.exports = (req, res) => {
     let image = req.files.image;
-    console.log(image);
-    image.mv(path.resolve(__dirname, 'public/upload', image.name), function (err) {
+    image.mv(path.resolve(__dirname, '..', 'public/upload', image.name), function (error) {
         BlogPost.create({
             ...req.body,
             image: '/upload/' + image.name
@@ -12,6 +11,4 @@ module.exports = (req, res) => {
             res.redirect('/')
         })
     })
-
-
 }

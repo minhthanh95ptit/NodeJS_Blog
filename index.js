@@ -24,6 +24,9 @@ const validateMiddleWare = require('./middlewares/validationMiddleware')
 const authMiddleWare = require('./middlewares/authMiddleware')
 const redirectIfAuthenticatedMiddleware = require('./middlewares/redirectIfAuthenticatedMiddleware')
 
+const fileUpload = require('express-fileupload')
+app.use(fileUpload())
+
 app.set('view engine', 'ejs');
 
 const bodyParser = require('body-parser')
@@ -31,8 +34,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 
-const fileUpload = require('express-fileupload')
-app.use(fileUpload())
+
 
 
 const mongoose = require('mongoose');
